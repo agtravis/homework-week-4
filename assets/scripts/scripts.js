@@ -40,22 +40,22 @@ function questionTime() {
     answerBox.addEventListener('click', function () {
         if (event.target.nodeName === 'BUTTON') {
             userAnswer = event.target.textContent;
-            if (userAnswer === newAnswer) {
-                alert('Correct!');
-                score++;
-            } else {
-                alert('Wrong!');
-            }
-            questionBox.textContent = '';
-            while (answerBox.firstChild) {
-                answerBox.removeChild(answerBox.firstChild);
-            }
-            if (question < questions.length - 1) {
-                question++;
-                questionTime();
-            } else {
-                alert('finished! Your score is ' + score + ' out of ' + questions.length + '!');
-            }
+        }
+        if (userAnswer === newAnswer) {
+            alert('Correct!');
+            score++;
+        } else {
+            alert('Wrong!');
+        }
+        questionBox.textContent = '';
+        while (answerBox.firstChild) {
+            answerBox.removeChild(answerBox.firstChild);
+        }
+        if (question < questions.length - 1) {
+            question++;
+            questionTime();
+        } else {
+            alert('finished! Your score is ' + score + ' out of ' + questions.length + '!');
         }
     });
 }
