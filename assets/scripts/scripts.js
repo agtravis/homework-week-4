@@ -56,9 +56,11 @@ function questionTime() {
     //set new answer to correct answer drawn from array
     newAnswer = questions[question].answer;
     //create answer choices
-    for (var i = 0; i < questions[question].choices.length; i++) {
-        var answerButton = document.getElementById('btn' + i);
+for (var i = 0; i < questions[question].choices.length; i++) {
+        var answerButton = document.createElement('button');
+        answerButton.setAttribute('id', 'answerButton' + i);
         answerButton.textContent = questions[question].choices[i];
+        answerBox.appendChild(answerButton);
     }
     //take user choice and compare to actual answer
     answerBox.addEventListener('click', function () {
@@ -84,17 +86,15 @@ function questionTime() {
 
 
 
-
-
-
-
-
 // for (var i = 0; i < questions[question].choices.length; i++) {
-    //     var answerButton = document.createElement('button');
-    //     answerButton.setAttribute('id', 'answerButton' + i);
-    //     answerButton.textContent = questions[question].choices[i];
-    //     answerBox.appendChild(answerButton);
-    // }
+//     var answerButton = document.getElementById('btn' + i);
+//     answerButton.textContent = questions[question].choices[i];
+// }
+
+
+
+
+
 //elem.parentNode.removeChild(elem);
 // while (el.firstChild) el.removeChild(el.firstChild);
 // document.querySelector('.answer').addEventListener('click', function () {
