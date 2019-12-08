@@ -26,38 +26,14 @@ function start() {
     }, 1000);
 }
 
-var questions = [
-    {
-        title: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
-    },
-    {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
-    },
-    {
-        title: "Pick C",
-        choices: ["quotes", "curly brackets", "C", "square brackets"],
-        answer: "C"
-    },
-    {
-        title: "Pick D",
-        choices: ["quotes", "curly brackets", "parentheses", "D"],
-        answer: "D"
-    }
-];
-
 var score = 0;
 var question = 0;
-var newAnswer;
+var newAnswer = '';
 function questionTime() {
     questionBox.textContent = questions[question].title;
     newAnswer = questions[question].answer;
     for (var i = 0; i < questions[question].choices.length; i++) {
         var answerButton = document.createElement('button');
-        answerButton.setAttribute('id', 'answerButton' + i);
         answerButton.textContent = questions[question].choices[i];
         answerBox.appendChild(answerButton);
     }
@@ -70,12 +46,12 @@ function questionTime() {
             } else {
                 alert('Wrong!');
             }
+            questionBox.textContent = '';
+            while (answerBox.firstChild) {
+                answerBox.removeChild(answerBox.firstChild);
+            }
             if (question < questions.length - 1) {
                 question++;
-                questionBox.textContent = '';
-                while (answerBox.firstChild) {
-                    answerBox.removeChild(answerBox.firstChild);
-                }
                 questionTime();
             } else {
                 alert('finished! Your score is ' + score + ' out of ' + questions.length + '!');
