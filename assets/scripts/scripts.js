@@ -2,13 +2,13 @@
 
 
 
-var mainEl = document.getElementById('main');
-var readEl = document.getElementById('read');
-var timerEl = document.getElementById('countdown');
+var mainContent = document.getElementById('main');
+// var readEl = document.getElementById('read');
+var timeToStart = document.getElementById('countdown');
 var bodyEl = document.createElement('div');
 
 document.getElementById('begin').addEventListener('click', function() {
-    timerEl.textContent = 'This quiz will start in 5...'
+    timeToStart.textContent = 'This quiz will start in 5...'
     start();
 });
 
@@ -19,12 +19,12 @@ function start() {
     var timeLeft = 5;
   
     var timeInterval = setInterval(function () {
-      timerEl.textContent = 'This quiz will start in ' + (timeLeft -1) + '...';
+      timeToStart.textContent = 'This quiz will start in ' + (timeLeft -1) + '...';
       --timeLeft;
   
       if (timeLeft === -1) {
         clearInterval(timeInterval);
-        timerEl.textContent = '';
+        timeToStart.textContent = '';
         questionTime();
       }
   
