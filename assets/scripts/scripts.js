@@ -49,8 +49,9 @@ var questions = [
 ];
 var score = 0;
 var question = 0;
+var answered;
+var newAnswer;
 function questionTime() {
-    var newAnswer;
     //set new question to question drawn from array
     questionBox.textContent = questions[question].title;
     //set new answer to correct answer drawn from array
@@ -69,11 +70,11 @@ for (var i = 0; i < questions[question].choices.length; i++) {
             if (userAnswer === newAnswer) {
                 alert('Correct!');
                 score++;
+                answered = true;
             } else {
                 alert('Wrong!');
+                answered = true;
             }
-            alert(score);
-            question++;
         }
     });
 }
