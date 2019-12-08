@@ -49,37 +49,47 @@ var questions = [
 ];
 var score = 0;
 var question = 0;
-var answered;
 var newAnswer;
 function questionTime() {
-    //set new question to question drawn from array
-    questionBox.textContent = questions[question].title;
-    //set new answer to correct answer drawn from array
-    newAnswer = questions[question].answer;
-    //create answer choices
-for (var i = 0; i < questions[question].choices.length; i++) {
+    questionBox.textContent = nextQuestion(question);
+    newAnswer = nextAnswer(question);
+    for (var i = 0; i < questions[question].choices.length; i++) {
         var answerButton = document.createElement('button');
         answerButton.setAttribute('id', 'answerButton' + i);
         answerButton.textContent = questions[question].choices[i];
         answerBox.appendChild(answerButton);
     }
-    //take user choice and compare to actual answer
     answerBox.addEventListener('click', function () {
         if (event.target.nodeName === 'BUTTON') {
             userAnswer = event.target.textContent;
             if (userAnswer === newAnswer) {
                 alert('Correct!');
                 score++;
-                answered = true;
             } else {
                 alert('Wrong!');
-                answered = true;
+            }
+            console.log(score);
+            questionBox.textContent = '';
+            while (answerBox.firstChild) {
+                answerBox.removeChild(answerBox.firstChild);
+            }
+            question++;
+            if (question < questions.length) {
+                questionTime();
+            } else {
+                alert('finished! Your score is ' + score + ' out of ' + questions.length + '!');
             }
         }
     });
 }
 
+function nextQuestion(question) {
+    return questions[question].title;
+}
 
+function nextAnswer(question) {
+    return questions[question].answer;
+}
 
 
 
