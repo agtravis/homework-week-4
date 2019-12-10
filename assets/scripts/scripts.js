@@ -9,7 +9,7 @@ var userScore = document.getElementById('score');
 var total = document.getElementById('total');
 var gameClockElement = document.getElementById("countdownGame");
 var toHighScores = document.getElementById('to-high-scores');
-var leaderTitle = document.getElementById('leader-title');
+var highScores = document.getElementById('high-scores');
 
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
@@ -152,6 +152,11 @@ function finish() {
     finalScoreElement.classList.remove('hide');
     //hide clock
     gameClockElement.classList.add('hide');
+    //show button for final scores
     toHighScores.classList.remove('hide');
-
 }
+
+toHighScores.addEventListener('click', function() {
+    highScores.classList.remove('hide');
+    toHighScores.classList.add('hide');
+});
