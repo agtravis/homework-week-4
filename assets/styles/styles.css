@@ -1,8 +1,6 @@
 body {
     padding: 0;
     margin: 0;
-    width: 100vw;
-    height: 100vh;
 }
 
 
@@ -90,4 +88,24 @@ body {
 
 #submit-score {
     text-align: center;
+}
+
+footer {
+    background-color: #999999;
+    border-top: 3px solid #666666;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer p {
+    font-size: 0.7em;
+    color: #0054a6;
+    position: relative;
+    top: 18px;
+    margin: 0;
 }
