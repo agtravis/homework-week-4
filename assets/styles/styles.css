@@ -7,7 +7,7 @@ body {
 #header-container {
     display: flex;
     justify-content: center;
-    border-bottom: 8px solid #ffc107;
+    border-bottom: 8px solid #222;
 }
 
 #header-container-content {
@@ -23,8 +23,8 @@ body {
 }
 
 #title {
-    color: #ffffff;
-    background-color: #0054a6;
+    color: #222;
+    background-color: #99c0b6;
     flex-grow: 2;
     padding: 1em;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 #portfolio-link {
-    color: #0054a6;
+    color: #689c8f;
     background-color: #ffffff;
     font-size: 2em;
     flex-grow: 1;
@@ -52,28 +52,45 @@ body {
 
 #portfolio-link:hover {
     text-decoration: none;
-    color: #ffc107;
+    color: #476b62;
 }
 
 #quiz-app {
-    border: 1px solid black;
+    border:3px solid #222;
     margin-top: 50px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+#quiz-title {
+    text-align: center;
 }
 
 .btn-grid {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    /* display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
-    margin: 20px 0;
+    margin: 20px 0; */
 }
 
 .btn {
+    width: auto;
+    margin: 10px 20px;
+    background-color: #99c0b6;
+    border: 2px solid #222;
 }
 
 .btn:hover {
+    background-color: #689c8f;
 }
 
 .start-btn {
+    background-color: #99c0b6;
+    border: 2px solid #222;
+    font-size: 2em;
+    padding: 0 65px;
 }
 
 .controls {
@@ -104,7 +121,7 @@ footer {
 
 footer p {
     font-size: 0.7em;
-    color: #0054a6;
+    color: #476b62;
     position: relative;
     top: 18px;
     margin: 0;

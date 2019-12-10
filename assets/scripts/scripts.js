@@ -10,6 +10,8 @@ var total = document.getElementById('total');
 var gameClockElement = document.getElementById("countdownGame");
 var toHighScores = document.getElementById('to-high-scores');
 var highScores = document.getElementById('high-scores');
+var instructions = document.getElementById('instructions');
+var quizTitle = document.getElementById('quiz-title');
 
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
@@ -28,6 +30,8 @@ gameClockElement.textContent = 'Seconds left: ' + seconds;
 startButton.addEventListener('click', function () {
     //the start button disappears
     startButton.classList.add('hide');
+    instructions.classList.add('hide');
+    quizTitle.classList.add('hide');
     //the countdown to start sentence is primed
     timeToStart.textContent = 'The quiz will start in 5...';
     //start the countdown
@@ -36,7 +40,7 @@ startButton.addEventListener('click', function () {
 
 function start() {
     //5 seconds til the quiz starts
-    var timeLeft = 5;
+    var timeLeft = 1;
     //trigger the timer, for each iteration
     var timeInterval = setInterval(function () {
         //the countdown text reads
