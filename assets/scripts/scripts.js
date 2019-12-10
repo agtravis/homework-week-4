@@ -8,6 +8,8 @@ var finalScoreElement = document.getElementById('submit-score');
 var userScore = document.getElementById('score');
 var total = document.getElementById('total');
 var gameClockElement = document.getElementById("countdownGame");
+var toHighScores = document.getElementById('to-high-scores');
+var leaderTitle = document.getElementById('leader-title');
 
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
@@ -52,7 +54,7 @@ function start() {
             //the quiz starts
             quizTime();
         }
-//1000 milliseconds means this loop occurs once per second
+        //1000 milliseconds means this loop occurs once per second
     }, 1000);
 }
 
@@ -68,16 +70,7 @@ function quizTime() {
             //alert
             alert('You ran out of time!');
             //hide the question div
-            questionContainerElement.classList.add('hide');
-            //set user score text to the score
-            userScore.innerText = score;
-            //set total to length of array of questions
-            total.innerText = questions.length;
-            //show final score div
-            finalScoreElement.classList.remove('hide');
-            //hide clock
-            gameClockElement.classList.add('hide');
-            //stop the counter
+            finish();
             clearInterval(gameClockInterval);
         }
     }, 1000);
@@ -139,15 +132,26 @@ function selectAnswer(e) {
     } else {
         //hide the game and show the finishing div with the dynamic data
 
-        questionContainerElement.classList.add('hide');
-        userScore.innerText = score;
-        total.innerText = questions.length;
-        finalScoreElement.classList.remove('hide');
-        gameClockElement.classList.add('hide');
+        finish();
         //gameClockInterval variable accessible because of scope
         clearInterval(gameClockInterval);
 
 
         //this will submit to storage
     }
+}
+
+function finish() {
+    //hide the question div
+    questionContainerElement.classList.add('hide');
+    //set user score text to the score
+    userScore.innerText = score;
+    //set total to length of array of questions
+    total.innerText = questions.length;
+    //show final score div
+    finalScoreElement.classList.remove('hide');
+    //hide clock
+    gameClockElement.classList.add('hide');
+    toHighScores.classList.remove('hide');
+
 }
