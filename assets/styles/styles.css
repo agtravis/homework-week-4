@@ -93,6 +93,10 @@ body {
     padding: 0 65px;
 }
 
+#to-high-scores {
+    text-align: center;
+}
+
 .controls {
     display: flex;
     justify-content: center;
