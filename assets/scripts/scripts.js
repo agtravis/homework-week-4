@@ -7,36 +7,80 @@ var answerButtonsElement = document.getElementById('answer-buttons');
 var finalScoreElement = document.getElementById('submit-score');
 var userScore = document.getElementById('score');
 var total = document.getElementById('total');
+var gameClockElement = document.getElementById("countdownGame");
 
-//set variables that will increase, to start at zero
+//declare outside of function so clear interval can be called at any point with scope
+var gameClockInterval;
+
+//set variables that will increase to start at zero
 var currentQuestionIndex = 0;
 var score = 0;
 
+//15 seconds per question
+var seconds = questions.length * 15;
+
+//prime the gameclock
+gameClockElement.textContent = 'Seconds left: ' + seconds;
+
+//when the user clicks start
 startButton.addEventListener('click', function () {
-    timeToStart.textContent = 'This quiz will start in 5...';
+    //the start button disappears
+    startButton.classList.add('hide');
+    //the countdown to start sentence is primed
+    timeToStart.textContent = 'The quiz will start in 5...';
+    //start the countdown
     start();
 });
 
 function start() {
-    //change this to 5
-    var timeLeft = 1;
-
+    //5 seconds til the quiz starts
+    var timeLeft = 5;
+    //trigger the timer, for each iteration
     var timeInterval = setInterval(function () {
-        timeToStart.textContent = 'This quiz will start in ' + (timeLeft - 1) + '...';
-        --timeLeft;
-
+        //the countdown text reads
+        timeToStart.textContent = 'The quiz will start in ' + (timeLeft - 1) + '...';
+        //the timer decrements one
+        timeLeft--;
+        //when the timer increments to zero
         if (timeLeft === 0) {
+            //the interval is cleared and the timer stops iterating
             clearInterval(timeInterval);
-            timeToStart.textContent = '';
+            //the countdown div is hidden
+            timeToStart.classList.add('hide');
+            //the game clock div is visible
+            gameClockElement.classList.remove('hide');
+            //the quiz starts
             quizTime();
         }
-
+//1000 milliseconds means this loop occurs once per second
     }, 1000);
 }
 
 function quizTime() {
-    //first hide the start button
-    startButton.classList.add('hide');
+    //this variable has global scope, timer started
+    gameClockInterval = setInterval(function () {
+        //seconds decrement
+        seconds--;
+        //clock text displays
+        gameClockElement.textContent = 'Seconds left: ' + seconds;
+        //if the timer runs out - has to be set to <= due to penalty seconds deductions meaning it could skip zero
+        if (seconds <= 0) {
+            //alert
+            alert('You ran out of time!');
+            //hide the question div
+            questionContainerElement.classList.add('hide');
+            //set user score text to the score
+            userScore.innerText = score;
+            //set total to length of array of questions
+            total.innerText = questions.length;
+            //show final score div
+            finalScoreElement.classList.remove('hide');
+            //hide clock
+            gameClockElement.classList.add('hide');
+            //stop the counter
+            clearInterval(gameClockInterval);
+        }
+    }, 1000);
     //get the hidden question container div and show it
     questionContainerElement.classList.remove('hide');
     //run the function to set the question
@@ -83,6 +127,8 @@ function selectAnswer(e) {
     if (correct) {
         //the score increases by one
         score++;
+    } else {
+        seconds = seconds - 15;
     }
     //if the index of the current question is less than the number of questions in the array (subtracting one to account for the last index being one less than the length)
     if (currentQuestionIndex < questions.length - 1) {
@@ -92,10 +138,16 @@ function selectAnswer(e) {
         nextQuestion();
     } else {
         //hide the game and show the finishing div with the dynamic data
+
         questionContainerElement.classList.add('hide');
         userScore.innerText = score;
         total.innerText = questions.length;
         finalScoreElement.classList.remove('hide');
+        gameClockElement.classList.add('hide');
+        //gameClockInterval variable accessible because of scope
+        clearInterval(gameClockInterval);
+
+
         //this will submit to storage
     }
 }
