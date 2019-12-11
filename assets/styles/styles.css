@@ -111,6 +111,14 @@ body {
     text-align: center;
 }
 
+#high-scores {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 3px solid #476b62;
+    border-bottom: 3px solid #476b62;
+    text-align: center;
+}
+
 footer {
     background-color: #999999;
     border-top: 3px solid #666666;

@@ -12,6 +12,7 @@ var toHighScores = document.getElementById('to-high-scores');
 var highScores = document.getElementById('high-scores');
 var instructions = document.getElementById('instructions');
 var quizTitle = document.getElementById('quiz-title');
+var answeredCorrect = document.getElementById('questions-correct');
 
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
@@ -19,6 +20,13 @@ var gameClockInterval;
 //set variables that will increase to start at zero
 var currentQuestionIndex = 0;
 var score = 0;
+var questionsCorrect = 0;
+
+//multiplied scoring variables
+var startTime;
+var finishTime;
+var answerTime;
+
 
 //15 seconds per question
 var seconds = questions.length * 15;
@@ -40,7 +48,7 @@ startButton.addEventListener('click', function () {
 
 function start() {
     //5 seconds til the quiz starts
-    var timeLeft = 1;
+    var timeLeft = 5;
     //trigger the timer, for each iteration
     var timeInterval = setInterval(function () {
         //the countdown text reads
@@ -92,6 +100,8 @@ function nextQuestion() {
     }
     //set the question to the property 'title' for the current iteration index of the questions array
     questionElement.innerText = questions[currentQuestionIndex].title;
+    var startTime = seconds;
+
     //get the array of answer objects currently iterator on, and run a forEach loop on it. 'answer' is the parameter name I have given to each item in the aray
     questions[currentQuestionIndex].answers.forEach(function (answer) {
         //create a button
@@ -107,6 +117,8 @@ function nextQuestion() {
         }
         //add a listener for a click on a button, and if there is one pass the event to the function selectAnswer, which in turn passes the event
         button.addEventListener('click', function (e) {
+            finishTime = seconds;
+            answerTime = startTime - finishTime;
             selectAnswer(e);
         });
         //append the button to the div
@@ -122,8 +134,19 @@ function selectAnswer(e) {
     var correct = selectedButton.dataset.correct;
     // if the answer is the correct one
     if (correct) {
-        //the score increases by one
-        score++;
+        //the score increases
+        var multiplier;
+        if (answerTime < 5) {
+            multiplier = 6;
+        } else if (answerTime >= 5 || answerTime < 10) {
+            multiplier = 4;
+        } else if (answerTime >= 10 || answerTime < 15) {
+            multiplier = 2;
+        } else {
+            multiplier = 1;
+        }
+        score += multiplier;
+        questionsCorrect++;
     } else {
         seconds = seconds - 15;
     }
@@ -150,6 +173,7 @@ function finish() {
     questionContainerElement.classList.add('hide');
     //set user score text to the score
     userScore.innerText = score;
+    answeredCorrect.innerText = questionsCorrect;
     //set total to length of array of questions
     total.innerText = questions.length;
     //show final score div
@@ -160,7 +184,7 @@ function finish() {
     toHighScores.classList.remove('hide');
 }
 
-toHighScores.addEventListener('click', function() {
+toHighScores.addEventListener('click', function () {
     highScores.classList.remove('hide');
     toHighScores.classList.add('hide');
 });
