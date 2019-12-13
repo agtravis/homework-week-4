@@ -80,6 +80,7 @@ body {
     margin: 10px 20px;
     background-color: #99c0b6;
     border: 2px solid #222;
+    white-space: normal;/*allows text to wrap inside buttons*/
 }
 
 .btn:hover {
