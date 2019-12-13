@@ -69,10 +69,6 @@ body {
 .btn-grid {
     display: flex;
     flex-direction: column;
-    /* display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    margin: 20px 0; */
 }
 
 .btn {

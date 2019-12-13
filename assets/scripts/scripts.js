@@ -117,10 +117,10 @@ function nextQuestion() {
             button.dataset.correct = answer.correct;
         }
         //add a listener for a click on a button, and if there is one pass the event to the function selectAnswer, which in turn passes the event
-        button.addEventListener('click', function (e) {
+        button.addEventListener('click', function (event) {
             finishTime = seconds;
             answerTime = startTime - finishTime;
-            selectAnswer(e);
+            selectAnswer(event);
         });
         //append the button to the div
         answerButtonsElement.appendChild(button);
@@ -128,9 +128,9 @@ function nextQuestion() {
 }
 
 //handling the answer. The event type is passed
-function selectAnswer(e) {
+function selectAnswer(event) {
     //store the event (click) target (button) to a variable
-    var selectedButton = e.target;
+    var selectedButton = event.target;
     // set a new variable to hold whether or not the data attribute exists - remember if it was false it does NOT have this attribute, and returns false
     var correct = selectedButton.dataset.correct;
     // if the answer is the correct one
