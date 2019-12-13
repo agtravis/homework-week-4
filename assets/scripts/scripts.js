@@ -13,6 +13,7 @@ var highScores = document.getElementById('high-scores');
 var instructions = document.getElementById('instructions');
 var quizTitle = document.getElementById('quiz-title');
 var answeredCorrect = document.getElementById('questions-correct');
+var possibleTotal = document.getElementById('possible-total');
 
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
@@ -174,6 +175,7 @@ function finish() {
     //set user score text to the score
     userScore.innerText = score;
     answeredCorrect.innerText = questionsCorrect;
+    possibleTotal.innerText = questions.length * 6; // max multiplier hard coded
     //set total to length of array of questions
     total.innerText = questions.length;
     //show final score div
