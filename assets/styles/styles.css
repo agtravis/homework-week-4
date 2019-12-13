@@ -1,6 +1,9 @@
 body {
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -140,13 +143,13 @@ cursor: pointer;
 footer {
     background-color: #999999;
     border-top: 3px solid #666666;
-    position: absolute;
+    /* position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 0; */
     width: 100%;
     height: 50px;
     text-align: center;
-    margin-top: 50px;
+    margin-top: auto;
 }
 
 footer p {
