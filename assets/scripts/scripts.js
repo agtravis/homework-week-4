@@ -208,7 +208,7 @@ function init() {
     if (storedHighScoresInitials !== null) {
         highScoresInitials = storedHighScoresInitials;
     }
-
+    highScoresInitials.sort(compare);
 }
 
 
@@ -257,7 +257,7 @@ function renderHighScoresInitials() {
         var highScorer = highScoresInitials[i];
 
         var li = document.createElement('li');
-        li.textContent = highScorer.name + ': ' + highScorer.score + ' out of ' + highScorer.maxScore + ' at ' + highScorer.percent + '%';
+        li.textContent = (i + 1) + '. ' + highScorer.name + ': ' + highScorer.score + ' out of ' + highScorer.maxScore + ' at ' + highScorer.percent + '%';
         li.setAttribute('data-index', i);
 
         var button = document.createElement('button');

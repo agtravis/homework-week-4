@@ -58,6 +58,7 @@ body {
 #quiz-app {
     border:3px solid #222;
     margin-top: 50px;
+    margin-bottom: 50px;
     border-radius: 5px;
     padding: 15px;
 }
@@ -114,6 +115,26 @@ body {
     border-top: 3px solid #476b62;
     border-bottom: 3px solid #476b62;
     text-align: center;
+}
+
+ol#high-scores-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #99c0b6;
+}
+
+ol#high-scores-list li button {
+    background-color: #689c8f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+ol#high-scores-list li button:hover {
+background-color: #476b62;
+cursor: pointer;
 }
 
 footer {
