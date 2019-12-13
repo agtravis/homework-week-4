@@ -209,7 +209,6 @@ function init() {
         highScoresInitials = storedHighScoresInitials;
     }
 
-    renderHighScoresInitials();
 }
 
 
@@ -221,9 +220,30 @@ function submitScore(event) {
         return;
     }
     init();
-    highScoresInitials.push(yourName);
+    var yourObj = {
+        name: yourName,
+        score: score,
+        maxScore: possibleTotal.innerText,
+        percent: Math.floor((score / parseInt(possibleTotal.innerText)) * 100)
+    }
+    highScoresInitials.push(yourObj);
+    highScoresInitials.sort(compare);
     storeHighScoresInitials();
     renderHighScoresInitials();
+    finalScoreElement.classList.add('hide');
+}
+
+function compare(a, b) {
+    var scorerA = a.percent;
+    var scorerB = b.percent;
+
+    var comparison = 0;
+    if (scorerA < scorerB) {
+        comparison = 1;
+    } else if ( scorerA > scorerB) {
+        comparison = -1;
+    }
+    return comparison;
 }
 
 function storeHighScoresInitials() {
@@ -231,15 +251,13 @@ function storeHighScoresInitials() {
 }
 
 function renderHighScoresInitials() {
-    // Clear todoList element and update todoCountSpan
     highScoresList.innerHTML = '';
 
-    // Render a new li for each todo
     for (var i = 0; i < highScoresInitials.length; i++) {
         var highScorer = highScoresInitials[i];
 
         var li = document.createElement('li');
-        li.textContent = highScorer;
+        li.textContent = highScorer.name + ': ' + highScorer.score + ' out of ' + highScorer.maxScore + ' at ' + highScorer.percent + '%';
         li.setAttribute('data-index', i);
 
         var button = document.createElement('button');
@@ -260,20 +278,3 @@ highScoresList.addEventListener('click', function(event) {
     }
 });
 
-
-
-// // When a element inside of the todoList is clicked...
-// todoList.addEventListener('click', function (event) {
-//   var element = event.target;
-
-//   // If that element is a button...
-//   if (element.matches('button')) {
-//     // Get its data-index value and remove the todo element from the list
-//     var index = element.parentElement.getAttribute('data-index');
-//     todos.splice(index, 1);
-
-//     // Store updated todos in localStorage, re-render the list
-//     storeTodos();
-//     renderTodos();
-//   }
-// });
