@@ -220,6 +220,7 @@ function submitScore(event) {
     if (yourName === '') {
         return;
     }
+    init();
     highScoresInitials.push(yourName);
     storeHighScoresInitials();
     renderHighScoresInitials();
@@ -232,19 +233,38 @@ function storeHighScoresInitials() {
 function renderHighScoresInitials() {
     // Clear todoList element and update todoCountSpan
     highScoresList.innerHTML = '';
-  
+
     // Render a new li for each todo
     for (var i = 0; i < highScoresInitials.length; i++) {
-      var highScorer = highScoresInitials[i];
-  
-      var li = document.createElement('li');
-      li.textContent = highScorer;
-      li.setAttribute('data-index', i);
-  
-      var button = document.createElement('button');
-      button.textContent = 'Remove';
-  
-      li.appendChild(button);
-      highScoresList.appendChild(li);
+        var highScorer = highScoresInitials[i];
+
+        var li = document.createElement('li');
+        li.textContent = highScorer;
+        li.setAttribute('data-index', i);
+
+        var button = document.createElement('button');
+        button.textContent = 'Remove';
+
+        li.appendChild(button);
+        highScoresList.appendChild(li);
     }
-  }
+}
+
+
+
+
+// // When a element inside of the todoList is clicked...
+// todoList.addEventListener('click', function (event) {
+//   var element = event.target;
+
+//   // If that element is a button...
+//   if (element.matches('button')) {
+//     // Get its data-index value and remove the todo element from the list
+//     var index = element.parentElement.getAttribute('data-index');
+//     todos.splice(index, 1);
+
+//     // Store updated todos in localStorage, re-render the list
+//     storeTodos();
+//     renderTodos();
+//   }
+// });
