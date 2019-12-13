@@ -14,6 +14,8 @@ var instructions = document.getElementById('instructions');
 var quizTitle = document.getElementById('quiz-title');
 var answeredCorrect = document.getElementById('questions-correct');
 var possibleTotal = document.getElementById('possible-total');
+var submitButton = document.getElementById('submit-btn');
+var highScoresList = document.getElementById('high-scores-list');
 
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
@@ -49,7 +51,7 @@ startButton.addEventListener('click', function () {
 
 function start() {
     //5 seconds til the quiz starts
-    var timeLeft = 5;
+    var timeLeft = 1;//change!
     //trigger the timer, for each iteration
     var timeInterval = setInterval(function () {
         //the countdown text reads
@@ -166,6 +168,7 @@ function selectAnswer(event) {
 
 
         //this will submit to storage
+        submitButton.addEventListener('click', submitScore);
     }
 }
 
@@ -189,4 +192,56 @@ function finish() {
 toHighScores.addEventListener('click', function () {
     highScores.classList.remove('hide');
     toHighScores.classList.add('hide');
+    init();
 });
+
+var highScoresInitials = [];
+
+
+
+function init() {
+    var storedHighScoresInitials = JSON.parse(localStorage.getItem('storedHighScoresInitials'));
+
+    if (storedHighScoresInitials !== null) {
+        highScoresInitials = storedHighScoresInitials;
+    }
+
+    renderHighScoresInitials();
+}
+
+
+function submitScore(event) {
+    event.preventDefault();
+    var yourName = prompt('Enter your initials');
+    yourName = yourName.trim();
+    if (yourName === '') {
+        return;
+    }
+    highScoresInitials.push(yourName);
+    storeHighScoresInitials();
+    renderHighScoresInitials();
+}
+
+function storeHighScoresInitials() {
+    localStorage.setItem('storedHighScoresInitials', JSON.stringify(highScoresInitials));
+}
+
+function renderHighScoresInitials() {
+    // Clear todoList element and update todoCountSpan
+    highScoresList.innerHTML = '';
+  
+    // Render a new li for each todo
+    for (var i = 0; i < todos.length; i++) {
+      var highScorer = highScoresInitials[i];
+  
+      var li = document.createElement('li');
+      li.textContent = highScorer;
+      li.setAttribute('data-index', i);
+  
+      var button = document.createElement('button');
+      button.textContent = 'Remove';
+  
+      li.appendChild(button);
+      highScoresList.appendChild(li);
+    }
+  }
