@@ -250,6 +250,15 @@ function renderHighScoresInitials() {
     }
 }
 
+highScoresList.addEventListener('click', function(event) {
+    var element = event.target;
+    if (element.matches('button')) {
+        var index = element.parentElement.getAttribute('data-index');
+        highScoresInitials.splice(index, 1);
+        storeHighScoresInitials();
+        renderHighScoresInitials();
+    }
+});
 
 
 
