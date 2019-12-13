@@ -17,6 +17,10 @@ var possibleTotal = document.getElementById('possible-total');
 var submitButton = document.getElementById('submit-btn');
 var highScoresList = document.getElementById('high-scores-list');
 
+
+
+var highScoresInitials = [];
+
 //declare outside of function so clear interval can be called at any point with scope
 var gameClockInterval;
 
@@ -193,9 +197,8 @@ toHighScores.addEventListener('click', function () {
     highScores.classList.remove('hide');
     toHighScores.classList.add('hide');
     init();
+    renderHighScoresInitials();
 });
-
-var highScoresInitials = [];
 
 
 
@@ -231,7 +234,7 @@ function renderHighScoresInitials() {
     highScoresList.innerHTML = '';
   
     // Render a new li for each todo
-    for (var i = 0; i < todos.length; i++) {
+    for (var i = 0; i < highScoresInitials.length; i++) {
       var highScorer = highScoresInitials[i];
   
       var li = document.createElement('li');
