@@ -31,11 +31,16 @@
         <div class="row" id="main-row">
             <div class="col-lg-9 col-md-10 col-sm-9 col-12" id="quiz-app">
                 <div>
-                    <h1 id="quiz-title">JavaScript Quiz</h1>
+                    <h1 id="quiz-title">Quiz</h1>
                     <div id="instructions">
                         <p>What follows are a series of questions. Get it right, score a point! Get it wrong, take 15
                             seconds
                             off the clock!</p>
+                        <p>What quiz would you like to take?</p>
+                        <select name="cars" id="select-quiz">
+                            <option value="javascript">JavaScript</option>
+                            <option value="world-capitals">World Capitals</option>
+                        </select>
                         <p>The quiz is over when the time runs out or all questions have been answered.</p>
                     </div>
                     <!-- <div id="to-high-scores" class="hide">
@@ -46,7 +51,7 @@
                 <div id="question-container" class="hide">
                     <div id="question">Question</div>
                     <div id="answer-buttons" class="btn-grid">
-                        <div>
+                        <!-- <div>
                             <div class="btn-row">
                                 <button class="btn">Answer 1</button>
                                 <button class="btn">Answer 2</button>
@@ -57,7 +62,7 @@
                                 <button class="btn">Answer 3</button>
                                 <button class="btn">Answer 4</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 

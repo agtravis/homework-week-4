@@ -88,6 +88,14 @@ body {
     text-align: center;
 }
 
+#instructions {
+    text-align: center;
+}
+
+#select-quiz {
+    margin-bottom: 15px;
+}
+
 .btn-grid {
     display: flex;
     flex-direction: column;
