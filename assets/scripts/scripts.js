@@ -226,9 +226,20 @@ function init() {
 function submitScore(event) {
     event.preventDefault();
     modalElement.classList.remove('hide');
+    firstInitial.focus();
 }
 
-saveButton.addEventListener('click', sendScoreToStorage);
+firstInitial.addEventListener('keyup', function() {
+    secondInitial.focus();
+});
+
+secondInitial.addEventListener('keyup', function() {
+    thirdInitial.focus();
+});
+
+thirdInitial.addEventListener('keyup', sendScoreToStorage);
+
+// saveButton.addEventListener('click', sendScoreToStorage);
 
 function sendScoreToStorage(event) {
     event.preventDefault();
