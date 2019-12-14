@@ -62,6 +62,14 @@ body {
     font-weight: 500;
 }
 
+.correct-answer {
+    color: lime;
+}
+
+.wrong-answer {
+    color: red;
+}
+
 #portfolio-link {
     color: #689c8f;
     background-color: #ffffff;

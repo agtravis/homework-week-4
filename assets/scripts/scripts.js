@@ -4,6 +4,7 @@ var startButton = document.getElementById('start-btn');
 var questionContainerElement = document.getElementById('question-container');
 var questionElement = document.getElementById('question');
 var answerButtonsElement = document.getElementById('answer-buttons');
+var answerStatus = document.getElementById('answer-status');
 var finalScoreElement = document.getElementById('submit-score');
 var userScore = document.getElementById('score');
 var total = document.getElementById('total');
@@ -158,6 +159,28 @@ function nextQuestion() {
     });
 }
 
+function correctAnswerNotification() {
+    answerStatus.textContent = 'Correct!';
+    answerStatus.classList.remove('hide');
+    answerStatus.classList.add('correct-answer');
+    setTimeout(function () {
+        answerStatus.textContent = '';
+        answerStatus.classList.add('hide');
+        answerStatus.classList.remove('correct-answer');
+    }, 1000);
+}
+
+function wrongAnswerNotification() {
+    answerStatus.textContent = 'Incorrect!';
+    answerStatus.classList.remove('hide');
+    answerStatus.classList.add('wrong-answer');
+    setTimeout(function () {
+        answerStatus.textContent = '';
+        answerStatus.classList.add('hide');
+        answerStatus.classList.remove('wrong-answer');
+    }, 1000);
+}
+
 //handling the answer. The event type is passed
 function selectAnswer(event) {
     //store the event (click) target (button) to a variable
@@ -179,8 +202,10 @@ function selectAnswer(event) {
         }
         score += multiplier;
         questionsCorrect++;
+        correctAnswerNotification();
     } else {
         seconds = seconds - 15;
+        wrongAnswerNotification();
     }
     //if the index of the current question is less than the number of questions in the array (subtracting one to account for the last index being one less than the length)
     if (currentQuestionIndex < questions.length - 1) {
