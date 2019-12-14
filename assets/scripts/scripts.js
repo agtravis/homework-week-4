@@ -259,10 +259,11 @@ function sendScoreToStorage(event) {
     }
     highScoresInitials.push(yourObj);
     highScoresInitials.sort(compare);
-    storeHighScoresInitials();
-    renderHighScoresInitials();
     finalScoreElement.classList.add('hide');
     restart.classList.remove('hide');
+    highScores.classList.remove('hide');
+    storeHighScoresInitials();
+    renderHighScoresInitials();
 }
 
 function compare(a, b) {
