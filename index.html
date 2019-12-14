@@ -27,77 +27,82 @@
             </div>
         </div>
     </header>
-
-    <div class="container-fluid col-lg-9 col-md-10 col-sm-9 col-12" id="quiz-app">
-        <div>
-            <h1 id="quiz-title">JavaScript Quiz</h1>
-            <div id="instructions">
-                <p>What follows are a series of questions. Get it right, score a point! Get it wrong, take 15 seconds
-                    off the clock!</p>
-                <p>The quiz is over when the time runs out or all questions have been answered.</p>
-            </div>
-            <div id="to-high-scores" class="hide">
-                <button class="btn" id="high-scores-btn">High Scores</button>
-            </div>
-        </div>
-        <h2 id="countdown"></h2>
-        <div id="question-container" class="hide">
-            <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
+    <div class="container-fluid">
+        <div class="row" id="main-row">
+            <div class="col-lg-9 col-md-10 col-sm-9 col-12" id="quiz-app">
                 <div>
-                    <div class="btn-row">
-                        <button class="btn">Answer 1</button>
-                        <button class="btn">Answer 2</button>
+                    <h1 id="quiz-title">JavaScript Quiz</h1>
+                    <div id="instructions">
+                        <p>What follows are a series of questions. Get it right, score a point! Get it wrong, take 15
+                            seconds
+                            off the clock!</p>
+                        <p>The quiz is over when the time runs out or all questions have been answered.</p>
+                    </div>
+                    <div id="to-high-scores" class="hide">
+                        <button class="btn" id="high-scores-btn">High Scores</button>
                     </div>
                 </div>
-                <div>
-                    <div class="btn-row">
-                        <button class="btn">Answer 3</button>
-                        <button class="btn">Answer 4</button>
+                <h2 id="countdown"></h2>
+                <div id="question-container" class="hide">
+                    <div id="question">Question</div>
+                    <div id="answer-buttons" class="btn-grid">
+                        <div>
+                            <div class="btn-row">
+                                <button class="btn">Answer 1</button>
+                                <button class="btn">Answer 2</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="btn-row">
+                                <button class="btn">Answer 3</button>
+                                <button class="btn">Answer 4</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn">Start</button>
-        </div>
-        <div id="submit-score" class="hide">
-            <p>You scored <span id="score"></span> points out of a possible <span id="possible-total"></span>,</p>
-            <p>and answered <span id="questions-correct"></span> questions correct out of <span id="total"></span>!</p>
-            <p>Would you like to submit your score?</p>
-            <button id="submit-btn" class="btn">Submit!</button>
+                <div class="controls">
+                    <button id="start-btn" class="start-btn btn">Start</button>
+                </div>
+                <div id="submit-score" class="hide">
+                    <p>You scored <span id="score"></span> points out of a possible <span id="possible-total"></span>,
+                    </p>
+                    <p>and answered <span id="questions-correct"></span> questions correct out of <span
+                            id="total"></span>!</p>
+                    <p>Would you like to submit your score?</p>
+                    <button id="submit-btn" class="btn">Submit!</button>
 
-            <div id="modal-container" class="hide">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span id="close-popup" class="close">&times;</span>
-                        <h2 id="modal-name">
-                        </h2>
-                    </div>
-                    <div class="modal-body">
-                        <h3>
-                            Enter Your Initials:
-                        </h3>
-                        <input type="text" id="first-initial" maxlength="1" class="initial-field">
-                        <input type="text" id="second-initial" maxlength="1" class="initial-field">
-                        <input type="text" id="third-initial" maxlength="1" class="initial-field">
-                        <!-- <div>
+                    <div id="modal-container" class="hide">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span id="close-popup" class="close">&times;</span>
+                                <h2 id="modal-name">
+                                </h2>
+                            </div>
+                            <div class="modal-body">
+                                <h3>
+                                    Enter Your Initials:
+                                </h3>
+                                <input type="text" id="first-initial" maxlength="1" class="initial-field">
+                                <input type="text" id="second-initial" maxlength="1" class="initial-field">
+                                <input type="text" id="third-initial" maxlength="1" class="initial-field">
+                                <!-- <div>
                             <button id="save">Save</button>
                         </div> -->
+                            </div>
+                        </div>
                     </div>
+
+                </div>
+                <div id="restart" class="hide"><button id="restart-btn" class="btn">Start over</button></div>
+                <div id="countdownGame" class="hide"></div>
+                <div id="high-scores" class="hide">
+                    <h2 id="leader-title">Leader Board</h2>
+                    <ol id="high-scores-list"></ol>
                 </div>
             </div>
-
-        </div>
-        <div id="restart" class="hide"><button id="restart-btn" class="btn">Start over</button></div>
-        <div id="countdownGame" class="hide"></div>
-        <div id="high-scores" class="hide">
-            <h2 id="leader-title">Leader Board</h2>
-            <ol id="high-scores-list"></ol>
         </div>
     </div>
-
     <footer>
         <p>Copyright Alexander George Travis 2019 ©</p>
     </footer>
