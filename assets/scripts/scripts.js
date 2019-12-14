@@ -48,9 +48,10 @@ var answerTime;
 
 //15 seconds per question
 var seconds = questions.length * 15;
+var maxQuestionScore = 6;
 
 //prime the gameclock
-gameClockElement.textContent = 'Seconds left: ' + seconds;
+gameClockElement.textContent = commonSenseTime(seconds);
 
 //when the user clicks start
 startButton.addEventListener('click', function () {
@@ -94,20 +95,33 @@ function quizTime() {
         //seconds decrement
         seconds--;
         //clock text displays
-        gameClockElement.textContent = 'Seconds left: ' + seconds;
+        gameClockElement.textContent = commonSenseTime(seconds);
         //if the timer runs out - has to be set to <= due to penalty seconds deductions meaning it could skip zero
         if (seconds <= 0) {
             //alert
             alert('You ran out of time!');
+            clearInterval(gameClockInterval);
             //hide the question div
             finish();
-            clearInterval(gameClockInterval);
+            submitButton.addEventListener('click', submitScore);
         }
     }, 1000);
     //get the hidden question container div and show it
     questionContainerElement.classList.remove('hide');
     //run the function to set the question
     nextQuestion();
+}
+
+function commonSenseTime(seconds) {
+    var minutesLeft = Math.floor(seconds / 60);
+    minutesLeft = getPadding(minutesLeft) + minutesLeft;
+    var secondsLeft = seconds % 60;
+    secondsLeft = getPadding(secondsLeft) + secondsLeft;
+    return 'Time left - ' + minutesLeft + ':' + secondsLeft;
+}
+
+function getPadding(num) {
+    return num < 10 ? '0' : '';
 }
 
 function nextQuestion() {
@@ -155,7 +169,7 @@ function selectAnswer(event) {
         //the score increases
         var multiplier;
         if (answerTime < 5) {
-            multiplier = 6;
+            multiplier = maxQuestionScore;
         } else if (answerTime >= 5 || answerTime < 10) {
             multiplier = 4;
         } else if (answerTime >= 10 || answerTime < 15) {
@@ -193,7 +207,7 @@ function finish() {
     //set user score text to the score
     userScore.innerText = score;
     answeredCorrect.innerText = questionsCorrect;
-    possibleTotal.innerText = questions.length * 6; // max multiplier hard coded
+    possibleTotal.innerText = questions.length * maxQuestionScore; // max multiplier hard coded
     //set total to length of array of questions
     total.innerText = questions.length;
     //show final score div
