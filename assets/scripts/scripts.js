@@ -19,6 +19,12 @@ var highScoresList = document.getElementById('high-scores-list');
 var restart = document.getElementById('restart');
 var restartButton = document.getElementById('restart-btn');
 
+var modalElement = document.querySelector('#modal-container');
+var modalNameElement = document.querySelector('#modal-name');
+var descriptionElement = document.querySelector('#description');
+var closeElement = document.getElementById('close-popup');
+var saveButton = document.getElementById('save');
+
 var highScoresInitials = [];
 
 //declare outside of function so clear interval can be called at any point with scope
@@ -214,7 +220,16 @@ function init() {
 
 function submitScore(event) {
     event.preventDefault();
+    modalElement.classList.remove('hide');
+}
+
+saveButton.addEventListener('click', sendScoreToStorage);
+
+function sendScoreToStorage(event) {
+    event.preventDefault();
     var yourName = prompt('Enter your initials');
+    modalElement.classList.add('hide');
+
     yourName = yourName.trim();
     if (yourName === '') {
         return;
@@ -282,4 +297,37 @@ highScoresList.addEventListener('click', function(event) {
 restartButton.addEventListener('click', function() {
     location.reload();
 });
+
+
+closeElement.addEventListener('click', function() {
+    modalElement.classList.add('hide');
+});
+
+
+// function handleClick(event) {
+//     if (event.target.matches('button')) {
+//       event.preventDefault();
+//       modalElement.style.display = 'block';
+//       currentId = parseInt(event.target.parentElement.id);
+//       var name = people[currentId].name;
+//       var description = people[currentId].description;
+//       modalNameElement.textContent = name;
+//       descriptionElement.value = description ? description : '';
+//     }
+//   }
+  
+//   closeElement.addEventListener('click', close);
+//   saveButton.addEventListener('click', function (event) {
+//     event.preventDefault();
+//     people[currentId].description = descriptionElement.value;
+//     close();
+//   });
+  
+//   addButton.addEventListener('click', addPersonToList);
+//   peopleListElement.addEventListener('click', handleClick);
+//   document.addEventListener('click', function (event) {
+//     if (event.target === modalElement) {
+//       close();
+//     }
+//   });
 

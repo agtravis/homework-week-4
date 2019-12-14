@@ -6,7 +6,6 @@ body {
     min-height: 100vh;
 }
 
-
 #header-container {
     display: flex;
     justify-content: center;
@@ -59,7 +58,7 @@ body {
 }
 
 #quiz-app {
-    border:3px solid #222;
+    border: 3px solid #222;
     margin-top: 50px;
     margin-bottom: 50px;
     border-radius: 5px;
@@ -80,7 +79,8 @@ body {
     margin: 10px 20px;
     background-color: #99c0b6;
     border: 2px solid #222;
-    white-space: normal;/*allows text to wrap inside buttons*/
+    white-space: normal;
+    /*allows text to wrap inside buttons*/
 }
 
 .btn:hover {
@@ -110,6 +110,7 @@ body {
 
 #submit-score {
     text-align: center;
+    position: relative;
 }
 
 #high-scores {
@@ -136,12 +137,40 @@ ol#high-scores-list li button {
 }
 
 ol#high-scores-list li button:hover {
-background-color: #476b62;
-cursor: pointer;
+    background-color: #476b62;
+    cursor: pointer;
 }
 
 #restart {
     text-align: center;
+}
+
+#modal-container {
+    position: absolute;
+    top: -50px;
+    width: 100%;
+    height: 250px;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #689c8f;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    height: 200px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 footer {
