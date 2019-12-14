@@ -17,6 +17,7 @@ var possibleTotal = document.getElementById('possible-total');
 var submitButton = document.getElementById('submit-btn');
 var highScoresList = document.getElementById('high-scores-list');
 var restart = document.getElementById('restart');
+var restartButton = document.getElementById('restart-btn');
 
 var highScoresInitials = [];
 
@@ -276,5 +277,9 @@ highScoresList.addEventListener('click', function(event) {
         storeHighScoresInitials();
         renderHighScoresInitials();
     }
+});
+
+restartButton.addEventListener('click', function() {
+    location.reload();
 });
 
