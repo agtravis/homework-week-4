@@ -37,7 +37,7 @@
                 <p>The quiz is over when the time runs out or all questions have been answered.</p>
             </div>
             <div id="to-high-scores" class="hide">
-                <button class="btn">High Scores</button>
+                <button class="btn" id="high-scores-btn">High Scores</button>
             </div>
         </div>
         <h2 id="countdown"></h2>
@@ -77,9 +77,11 @@
                     </div>
                     <div class="modal-body">
                         <h3>
-                            Description:
+                            Enter Your Initials:
                         </h3>
-                        <input type="text" id="description">
+                        <input type="text" id="first-initial" maxlength="1" class="initial-field">
+                        <input type="text" id="second-initial" maxlength="1" class="initial-field">
+                        <input type="text" id="third-initial" maxlength="1" class="initial-field">
                         <div>
                             <button id="save">Save</button>
                         </div>

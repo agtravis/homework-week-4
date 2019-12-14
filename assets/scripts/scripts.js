@@ -18,12 +18,17 @@ var submitButton = document.getElementById('submit-btn');
 var highScoresList = document.getElementById('high-scores-list');
 var restart = document.getElementById('restart');
 var restartButton = document.getElementById('restart-btn');
+var highScoresButton = document.getElementById('high-scores-btn');
 
 var modalElement = document.querySelector('#modal-container');
 var modalNameElement = document.querySelector('#modal-name');
 var descriptionElement = document.querySelector('#description');
 var closeElement = document.getElementById('close-popup');
 var saveButton = document.getElementById('save');
+
+var firstInitial = document.getElementById('first-initial');
+var secondInitial = document.getElementById('second-initial');
+var thirdInitial = document.getElementById('third-initial');
 
 var highScoresInitials = [];
 
@@ -199,7 +204,7 @@ function finish() {
     toHighScores.classList.remove('hide');
 }
 
-toHighScores.addEventListener('click', function () {
+highScoresButton.addEventListener('click', function () {
     highScores.classList.remove('hide');
     toHighScores.classList.add('hide');
     init();
@@ -227,10 +232,10 @@ saveButton.addEventListener('click', sendScoreToStorage);
 
 function sendScoreToStorage(event) {
     event.preventDefault();
-    var yourName = prompt('Enter your initials');
+    // var yourName = prompt('Enter your initials');
     modalElement.classList.add('hide');
-
-    yourName = yourName.trim();
+    var yourName = firstInitial.value + secondInitial.value + thirdInitial.value;
+    yourName = yourName.toUpperCase();
     if (yourName === '') {
         return;
     }

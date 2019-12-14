@@ -173,6 +173,32 @@ ol#high-scores-list li button:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.initial-field {
+    width: 50px;
+    padding: 10px;
+    font-size: 2em;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+#modal-container button {
+    width: 150px;
+    margin: 10px 20px;
+    background-color: #99c0b6;
+    border: 2px solid #222;
+    white-space: normal;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#modal-container button:hover {
+    background-color: #476b62;
+    cursor: pointer;
+    color: white;
+}
+
 footer {
     background-color: #999999;
     border-top: 3px solid #666666;
