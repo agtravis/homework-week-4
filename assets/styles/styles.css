@@ -140,6 +140,10 @@ background-color: #476b62;
 cursor: pointer;
 }
 
+#restart {
+    text-align: center;
+}
+
 footer {
     background-color: #999999;
     border-top: 3px solid #666666;

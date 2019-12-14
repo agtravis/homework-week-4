@@ -16,8 +16,7 @@ var answeredCorrect = document.getElementById('questions-correct');
 var possibleTotal = document.getElementById('possible-total');
 var submitButton = document.getElementById('submit-btn');
 var highScoresList = document.getElementById('high-scores-list');
-
-
+var restart = document.getElementById('restart');
 
 var highScoresInitials = [];
 
@@ -231,6 +230,7 @@ function submitScore(event) {
     storeHighScoresInitials();
     renderHighScoresInitials();
     finalScoreElement.classList.add('hide');
+    restart.classList.remove('hide');
 }
 
 function compare(a, b) {
