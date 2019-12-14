@@ -131,7 +131,7 @@ function nextQuestion() {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
     //set the question to the property 'title' for the current iteration index of the questions array
-    questionElement.innerText = questions[currentQuestionIndex].title;
+    questionElement.innerText = 'Question ' + [currentQuestionIndex + 1] + ' of ' + questions.length + ': ' + questions[currentQuestionIndex].title;
     var startTime = seconds;
 
     //get the array of answer objects currently iterator on, and run a forEach loop on it. 'answer' is the parameter name I have given to each item in the aray
@@ -243,11 +243,11 @@ function submitScore(event) {
     firstInitial.focus();
 }
 
-firstInitial.addEventListener('keyup', function() {
+firstInitial.addEventListener('keyup', function () {
     secondInitial.focus();
 });
 
-secondInitial.addEventListener('keyup', function() {
+secondInitial.addEventListener('keyup', function () {
     thirdInitial.focus();
 });
 
@@ -287,7 +287,7 @@ function compare(a, b) {
     var comparison = 0;
     if (scorerA < scorerB) {
         comparison = 1;
-    } else if ( scorerA > scorerB) {
+    } else if (scorerA > scorerB) {
         comparison = -1;
     }
     return comparison;
@@ -315,7 +315,7 @@ function renderHighScoresInitials() {
     }
 }
 
-highScoresList.addEventListener('click', function(event) {
+highScoresList.addEventListener('click', function (event) {
     var element = event.target;
     if (element.matches('button')) {
         var index = element.parentElement.getAttribute('data-index');
@@ -325,12 +325,12 @@ highScoresList.addEventListener('click', function(event) {
     }
 });
 
-restartButton.addEventListener('click', function() {
+restartButton.addEventListener('click', function () {
     location.reload();
 });
 
 
-closeElement.addEventListener('click', function() {
+closeElement.addEventListener('click', function () {
     modalElement.classList.add('hide');
 });
 
@@ -346,14 +346,14 @@ closeElement.addEventListener('click', function() {
 //       descriptionElement.value = description ? description : '';
 //     }
 //   }
-  
+
 //   closeElement.addEventListener('click', close);
 //   saveButton.addEventListener('click', function (event) {
 //     event.preventDefault();
 //     people[currentId].description = descriptionElement.value;
 //     close();
 //   });
-  
+
 //   addButton.addEventListener('click', addPersonToList);
 //   peopleListElement.addEventListener('click', handleClick);
 //   document.addEventListener('click', function (event) {
