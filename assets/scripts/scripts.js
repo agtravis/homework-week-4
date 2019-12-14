@@ -8,7 +8,7 @@ var finalScoreElement = document.getElementById('submit-score');
 var userScore = document.getElementById('score');
 var total = document.getElementById('total');
 var gameClockElement = document.getElementById("countdownGame");
-var toHighScores = document.getElementById('to-high-scores');
+// var toHighScores = document.getElementById('to-high-scores');
 var highScores = document.getElementById('high-scores');
 var instructions = document.getElementById('instructions');
 var quizTitle = document.getElementById('quiz-title');
@@ -18,7 +18,7 @@ var submitButton = document.getElementById('submit-btn');
 var highScoresList = document.getElementById('high-scores-list');
 var restart = document.getElementById('restart');
 var restartButton = document.getElementById('restart-btn');
-var highScoresButton = document.getElementById('high-scores-btn');
+// var highScoresButton = document.getElementById('high-scores-btn');
 
 var modalElement = document.querySelector('#modal-container');
 var modalNameElement = document.querySelector('#modal-name');
@@ -201,15 +201,15 @@ function finish() {
     //hide clock
     gameClockElement.classList.add('hide');
     //show button for final scores
-    toHighScores.classList.remove('hide');
+    // toHighScores.classList.remove('hide');
 }
 
-highScoresButton.addEventListener('click', function () {
-    highScores.classList.remove('hide');
-    toHighScores.classList.add('hide');
-    init();
-    renderHighScoresInitials();
-});
+// highScoresButton.addEventListener('click', function () {
+//     highScores.classList.remove('hide');
+//     toHighScores.classList.add('hide');
+//     init();
+//     renderHighScoresInitials();
+// });
 
 
 

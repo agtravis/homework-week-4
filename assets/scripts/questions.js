@@ -60,166 +60,60 @@ var questions = [
             { text: "<script src='abc.js'>", correct: true },
             { text: "None of the above", correct: false }
         ]
-    }//,
-    // {
-    //     title: "The answer is K:",
-    //     answers: [
-    //         { text: "I", correct: false },
-    //         { text: "J", correct: false },
-    //         { text: "K", correct: true },
-    //         { text: "L", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is P:",
-    //     answers: [
-    //         { text: "M", correct: false },
-    //         { text: "N", correct: false },
-    //         { text: "O", correct: false },
-    //         { text: "P", correct: true }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is Q:",
-    //     answers: [
-    //         { text: "Q", correct: true },
-    //         { text: "R", correct: false },
-    //         { text: "S", correct: false },
-    //         { text: "T", correct: false }
-    //     ]
-    // },{
-    //     title: "The answer is A:",
-    //     answers: [
-    //         { text: "A", correct: true },
-    //         { text: "B", correct: false },
-    //         { text: "C", correct: false },
-    //         { text: "D", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is F:",
-    //     answers: [
-    //         { text: "E", correct: false },
-    //         { text: "F", correct: true },
-    //         { text: "G", correct: false },
-    //         { text: "H", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is K:",
-    //     answers: [
-    //         { text: "I", correct: false },
-    //         { text: "J", correct: false },
-    //         { text: "K", correct: true },
-    //         { text: "L", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is P:",
-    //     answers: [
-    //         { text: "M", correct: false },
-    //         { text: "N", correct: false },
-    //         { text: "O", correct: false },
-    //         { text: "P", correct: true }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is Q:",
-    //     answers: [
-    //         { text: "Q", correct: true },
-    //         { text: "R", correct: false },
-    //         { text: "S", correct: false },
-    //         { text: "T", correct: false }
-    //     ]
-    // },{
-    //     title: "The answer is A:",
-    //     answers: [
-    //         { text: "A", correct: true },
-    //         { text: "B", correct: false },
-    //         { text: "C", correct: false },
-    //         { text: "D", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is F:",
-    //     answers: [
-    //         { text: "E", correct: false },
-    //         { text: "F", correct: true },
-    //         { text: "G", correct: false },
-    //         { text: "H", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is K:",
-    //     answers: [
-    //         { text: "I", correct: false },
-    //         { text: "J", correct: false },
-    //         { text: "K", correct: true },
-    //         { text: "L", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is P:",
-    //     answers: [
-    //         { text: "M", correct: false },
-    //         { text: "N", correct: false },
-    //         { text: "O", correct: false },
-    //         { text: "P", correct: true }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is Q:",
-    //     answers: [
-    //         { text: "Q", correct: true },
-    //         { text: "R", correct: false },
-    //         { text: "S", correct: false },
-    //         { text: "T", correct: false }
-    //     ]
-    // },{
-    //     title: "The answer is A:",
-    //     answers: [
-    //         { text: "A", correct: true },
-    //         { text: "B", correct: false },
-    //         { text: "C", correct: false },
-    //         { text: "D", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is F:",
-    //     answers: [
-    //         { text: "E", correct: false },
-    //         { text: "F", correct: true },
-    //         { text: "G", correct: false },
-    //         { text: "H", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is K:",
-    //     answers: [
-    //         { text: "I", correct: false },
-    //         { text: "J", correct: false },
-    //         { text: "K", correct: true },
-    //         { text: "L", correct: false }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is P:",
-    //     answers: [
-    //         { text: "M", correct: false },
-    //         { text: "N", correct: false },
-    //         { text: "O", correct: false },
-    //         { text: "P", correct: true }
-    //     ]
-    // },
-    // {
-    //     title: "The answer is Q:",
-    //     answers: [
-    //         { text: "Q", correct: true },
-    //         { text: "R", correct: false },
-    //         { text: "S", correct: false },
-    //         { text: "T", correct: false }
-    //     ]
-    // }
+    },
+    {
+        title: "Which of the following best describes JavaScript?",
+        answers: [
+            { text: "a low-level programming language.", correct: false },
+            { text: "a scripting language precompiled in the browser.", correct: false },
+            { text: "a compiled scripting language.", correct: false },
+            { text: "an object-oriented scripting language.", correct: true }
+        ]
+    },
+    {
+        title: "Which of the following event fires when the form element loses the focus: <button>, <input>, <label>, <select>, <textarea>?",
+        answers: [
+            { text: "onfocus", correct: false },
+            { text: "onblur", correct: true },
+            { text: "onclick", correct: false },
+            { text: "ondblclick", correct: false }
+        ]
+    },
+    {
+        title: "JavaScript is interpreted by _________",
+        answers: [
+            { text: "Client", correct: true },
+            { text: "Server", correct: false },
+            { text: "Object", correct: false },
+            { text: "None of the above", correct: false }
+        ]
+    },{
+        title: "Using _______ statement is how you test for a specific condition.",
+        answers: [
+            { text: "Select", correct: false },
+            { text: "If", correct: true },
+            { text: "Switch", correct: false },
+            { text: "For", correct: false }
+        ]
+    },
+    {
+        title: "How to create a Date object in JavaScript?",
+        answers: [
+            { text: "dateObjectName = new Date([parameters])", correct: true },
+            { text: "dateObjectName.new Date([parameters])", correct: false },
+            { text: "dateObjectName := new Date([parameters])", correct: false },
+            { text: "dateObjectName Date([parameters])", correct: false }
+        ]
+    },
+    {
+        title: "The _______ method of an Array object adds and/or removes elements from an array.",
+        answers: [
+            { text: "Reverse", correct: false },
+            { text: "Shift", correct: false },
+            { text: "Slice", correct: false },
+            { text: "Splice", correct: true }
+        ]
+    }
 ];
 
 
