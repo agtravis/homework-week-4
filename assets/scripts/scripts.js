@@ -13,6 +13,8 @@ var gameClockElement = document.getElementById("countdownGame");
 var highScores = document.getElementById('high-scores');
 var instructions = document.getElementById('instructions');
 var quizTitle = document.getElementById('quiz-title');
+var selectQuiz = document.getElementById('select-quiz');
+var quizScriptLink = document.getElementById('quiz-script-link');
 var answeredCorrect = document.getElementById('questions-correct');
 var possibleTotal = document.getElementById('possible-total');
 var submitButton = document.getElementById('submit-btn');
@@ -47,6 +49,9 @@ var finishTime;
 var answerTime;
 
 
+
+
+
 //15 seconds per question
 var seconds = questions.length * 15;
 var maxQuestionScore = 6;
@@ -56,6 +61,14 @@ gameClockElement.textContent = commonSenseTime(seconds);
 
 //when the user clicks start
 startButton.addEventListener('click', function () {
+    var quizChoice = selectQuiz.options[selectQuiz.selectedIndex].text;
+    alert(quizChoice);
+    if (quizChoice === 'JavaScript') {
+        questions = questions;
+    } else if (quizChoice === 'World Capitals') {
+        questions = worldCapitals;
+    }
+
     //the start button disappears
     startButton.classList.add('hide');
     instructions.classList.add('hide');
