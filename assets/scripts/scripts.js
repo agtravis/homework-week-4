@@ -1,4 +1,3 @@
-//getting elements from the HTML and storing them as variables
 var timeToStart = document.getElementById('countdown');
 var startButton = document.getElementById('start-btn');
 var questionContainerElement = document.getElementById('question-container');
@@ -9,7 +8,6 @@ var finalScoreElement = document.getElementById('submit-score');
 var userScore = document.getElementById('score');
 var total = document.getElementById('total');
 var gameClockElement = document.getElementById("countdownGame");
-// var toHighScores = document.getElementById('to-high-scores');
 var highScores = document.getElementById('high-scores');
 var instructions = document.getElementById('instructions');
 var quizTitle = document.getElementById('quiz-title');
@@ -21,18 +19,14 @@ var submitButton = document.getElementById('submit-btn');
 var highScoresList = document.getElementById('high-scores-list');
 var restart = document.getElementById('restart');
 var restartButton = document.getElementById('restart-btn');
-// var highScoresButton = document.getElementById('high-scores-btn');
-
 var modalElement = document.querySelector('#modal-container');
-var modalNameElement = document.querySelector('#modal-name');
-var descriptionElement = document.querySelector('#description');
 var closeElement = document.getElementById('close-popup');
-var saveButton = document.getElementById('save');
-
 var firstInitial = document.getElementById('first-initial');
 var secondInitial = document.getElementById('second-initial');
 var thirdInitial = document.getElementById('third-initial');
 
+//empty array for high scores initials - this will pull from storage
+var highScoresTable = '';
 var highScoresInitials = [];
 
 //declare outside of function so clear interval can be called at any point with scope
@@ -48,12 +42,8 @@ var startTime;
 var finishTime;
 var answerTime;
 
-
-
-
-
-//15 seconds per question
-var seconds = questions.length * 15;
+//15 seconds per question / maximum pts per question committed to variable for multiple uses (potential final score)
+var seconds = '';
 var maxQuestionScore = 6;
 
 //prime the gameclock
@@ -61,15 +51,18 @@ gameClockElement.textContent = commonSenseTime(seconds);
 
 //when the user clicks start
 startButton.addEventListener('click', function () {
+    //get the user quiz choice and assign the appropriate questions array
     var quizChoice = selectQuiz.options[selectQuiz.selectedIndex].text;
-    alert(quizChoice);
     if (quizChoice === 'JavaScript') {
         questions = questions;
     } else if (quizChoice === 'World Capitals') {
         questions = worldCapitals;
     }
-
-    //the start button disappears
+    //the variable highScoresTable holds the string from the user's quiz choice
+    highScoresTable = quizChoice;
+    //the seconds are calulated based on the chosen array's number of questions
+    seconds = (questions.length * 15) + 1;
+    //the start button, instructions, and title disappear
     startButton.classList.add('hide');
     instructions.classList.add('hide');
     quizTitle.classList.add('hide');
@@ -85,17 +78,15 @@ function start() {
     //trigger the timer, for each iteration
     var timeInterval = setInterval(function () {
         //the countdown text reads
-        timeToStart.textContent = 'The quiz will start in ' + (timeLeft - 1) + '...';
+        timeToStart.textContent = 'Quiz starting in ' + (timeLeft - 1) + '...';
         //the timer decrements one
-        timeLeft--;
-        //when the timer increments to zero
+        --timeLeft;
+        //when the timer decrements to zero
         if (timeLeft === 0) {
             //the interval is cleared and the timer stops iterating
             clearInterval(timeInterval);
             //the countdown div is hidden
             timeToStart.classList.add('hide');
-            //the game clock div is visible
-            gameClockElement.classList.remove('hide');
             //the quiz starts
             quizTime();
         }
@@ -107,7 +98,9 @@ function quizTime() {
     //this variable has global scope, timer started
     gameClockInterval = setInterval(function () {
         //seconds decrement
-        seconds--;
+        --seconds;
+        //the game clock div is visible
+        gameClockElement.classList.remove('hide');
         //clock text displays
         gameClockElement.textContent = commonSenseTime(seconds);
         //if the timer runs out - has to be set to <= due to penalty seconds deductions meaning it could skip zero
@@ -115,7 +108,6 @@ function quizTime() {
             //alert
             alert('You ran out of time!');
             clearInterval(gameClockInterval);
-            //hide the question div
             finish();
             submitButton.addEventListener('click', submitScore);
         }
@@ -126,6 +118,7 @@ function quizTime() {
     nextQuestion();
 }
 
+//timer to recognizable display
 function commonSenseTime(seconds) {
     var minutesLeft = Math.floor(seconds / 60);
     minutesLeft = getPadding(minutesLeft) + minutesLeft;
@@ -133,7 +126,6 @@ function commonSenseTime(seconds) {
     secondsLeft = getPadding(secondsLeft) + secondsLeft;
     return 'Time left - ' + minutesLeft + ':' + secondsLeft;
 }
-
 function getPadding(num) {
     return num < 10 ? '0' : '';
 }
@@ -228,12 +220,9 @@ function selectAnswer(event) {
         nextQuestion();
     } else {
         //hide the game and show the finishing div with the dynamic data
-
         finish();
         //gameClockInterval variable accessible because of scope
         clearInterval(gameClockInterval);
-
-
         //this will submit to storage
         submitButton.addEventListener('click', submitScore);
     }
@@ -256,18 +245,16 @@ function finish() {
     // toHighScores.classList.remove('hide');
 }
 
-// highScoresButton.addEventListener('click', function () {
-//     highScores.classList.remove('hide');
-//     toHighScores.classList.add('hide');
-//     init();
-//     renderHighScoresInitials();
-// });
-
 
 
 function init() {
-    var storedHighScoresInitials = JSON.parse(localStorage.getItem('storedHighScoresInitials'));
-
+    var storedHighScoresInitials = '';
+    if (highScoresTable === 'JavaScript') {
+        storedHighScoresInitials = JSON.parse(localStorage.getItem('storedHighScoresInitials'));
+    }
+    if (highScoresTable === 'World Capitals') {
+        storedHighScoresInitials = JSON.parse(localStorage.getItem('storedHighScoresInitialsWorldCapitals'));
+    }
     if (storedHighScoresInitials !== null) {
         highScoresInitials = storedHighScoresInitials;
     }
@@ -290,8 +277,6 @@ secondInitial.addEventListener('keyup', function () {
 });
 
 thirdInitial.addEventListener('keyup', sendScoreToStorage);
-
-// saveButton.addEventListener('click', sendScoreToStorage);
 
 function sendScoreToStorage(event) {
     event.preventDefault();
@@ -332,7 +317,12 @@ function compare(a, b) {
 }
 
 function storeHighScoresInitials() {
-    localStorage.setItem('storedHighScoresInitials', JSON.stringify(highScoresInitials));
+    if (highScoresTable === 'JavaScript') {
+        localStorage.setItem('storedHighScoresInitials', JSON.stringify(highScoresInitials));
+    }
+    if (highScoresTable === 'World Capitals') {
+        localStorage.setItem('storedHighScoresInitialsWorldCapitals', JSON.stringify(highScoresInitials));
+    }
 }
 
 function renderHighScoresInitials() {
@@ -371,32 +361,4 @@ restartButton.addEventListener('click', function () {
 closeElement.addEventListener('click', function () {
     modalElement.classList.add('hide');
 });
-
-
-// function handleClick(event) {
-//     if (event.target.matches('button')) {
-//       event.preventDefault();
-//       modalElement.style.display = 'block';
-//       currentId = parseInt(event.target.parentElement.id);
-//       var name = people[currentId].name;
-//       var description = people[currentId].description;
-//       modalNameElement.textContent = name;
-//       descriptionElement.value = description ? description : '';
-//     }
-//   }
-
-//   closeElement.addEventListener('click', close);
-//   saveButton.addEventListener('click', function (event) {
-//     event.preventDefault();
-//     people[currentId].description = descriptionElement.value;
-//     close();
-//   });
-
-//   addButton.addEventListener('click', addPersonToList);
-//   peopleListElement.addEventListener('click', handleClick);
-//   document.addEventListener('click', function (event) {
-//     if (event.target === modalElement) {
-//       close();
-//     }
-//   });
 
