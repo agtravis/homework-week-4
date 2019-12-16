@@ -43,33 +43,27 @@ var finishTime;
 var answerTime;
 
 //15 seconds per question / maximum pts per question committed to variable for multiple uses (potential final score)
-var quizChoice;
-var seconds;
+var seconds = 0;
 var maxQuestionScore = 6;
 
 // ADD EVENT LISTENER TO SELECTION TO DEFINE QUIZ CHOICE AND CALCULATE SECONDS
-selectQuiz.addEventListener('change', function () {
-
-    //get the user quiz choice and assign the appropriate questions array
-    quizChoice = selectQuiz.options[selectQuiz.selectedIndex].text;
-    if (quizChoice === 'JavaScript') {
-        questions = questions;
-    } else if (quizChoice === 'World Capitals') {
-        questions = worldCapitals;
-    }
-});
-
-
-//the seconds are calulated based on the chosen array's number of questions
-seconds = questions.length * 15;
 
 //prime the gameclock
 gameClockElement.textContent = commonSenseTime(seconds);
 
 //when the user clicks start
 startButton.addEventListener('click', function () {
+    //get the user quiz choice and assign the appropriate questions array
+    var quizChoice = selectQuiz.options[selectQuiz.selectedIndex].text;
+    if (quizChoice === 'JavaScript') {
+        questions = questions;
+    } else if (quizChoice === 'World Capitals') {
+        questions = worldCapitals;
+    }
     //the variable highScoresTable holds the string from the user's quiz choice
     highScoresTable = quizChoice;
+    //the seconds are calulated based on the chosen array's number of questions
+    seconds = (questions.length * 15) + 1;
     //the start button, instructions, and title disappear
     startButton.classList.add('hide');
     instructions.classList.add('hide');
@@ -128,11 +122,15 @@ function quizTime() {
 
 //timer to recognizable display
 function commonSenseTime(seconds) {
-    var minutesLeft = Math.floor(seconds / 60);
-    minutesLeft = getPadding(minutesLeft) + minutesLeft;
-    var secondsLeft = seconds % 60;
-    secondsLeft = getPadding(secondsLeft) + secondsLeft;
-    return 'Time left - ' + minutesLeft + ':' + secondsLeft;
+    if (seconds === 0) {
+        return 'Time left - ';
+    } else {
+        var minutesLeft = Math.floor(seconds / 60);
+        minutesLeft = getPadding(minutesLeft) + minutesLeft;
+        var secondsLeft = seconds % 60;
+        secondsLeft = getPadding(secondsLeft) + secondsLeft;
+        return 'Time left - ' + minutesLeft + ':' + secondsLeft;
+    }
 }
 function getPadding(num) {
     return num < 10 ? '0' : '';
