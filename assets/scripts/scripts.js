@@ -43,25 +43,33 @@ var finishTime;
 var answerTime;
 
 //15 seconds per question / maximum pts per question committed to variable for multiple uses (potential final score)
-var seconds = '';
+var quizChoice;
+var seconds;
 var maxQuestionScore = 6;
+
+// ADD EVENT LISTENER TO SELECTION TO DEFINE QUIZ CHOICE AND CALCULATE SECONDS
+selectQuiz.addEventListener('change', function () {
+
+    //get the user quiz choice and assign the appropriate questions array
+    quizChoice = selectQuiz.options[selectQuiz.selectedIndex].text;
+    if (quizChoice === 'JavaScript') {
+        questions = questions;
+    } else if (quizChoice === 'World Capitals') {
+        questions = worldCapitals;
+    }
+});
+
+
+//the seconds are calulated based on the chosen array's number of questions
+seconds = questions.length * 15;
 
 //prime the gameclock
 gameClockElement.textContent = commonSenseTime(seconds);
 
 //when the user clicks start
 startButton.addEventListener('click', function () {
-    //get the user quiz choice and assign the appropriate questions array
-    var quizChoice = selectQuiz.options[selectQuiz.selectedIndex].text;
-    if (quizChoice === 'JavaScript') {
-        questions = questions;
-    } else if (quizChoice === 'World Capitals') {
-        questions = worldCapitals;
-    }
     //the variable highScoresTable holds the string from the user's quiz choice
     highScoresTable = quizChoice;
-    //the seconds are calulated based on the chosen array's number of questions
-    seconds = (questions.length * 15) + 1;
     //the start button, instructions, and title disappear
     startButton.classList.add('hide');
     instructions.classList.add('hide');
@@ -95,12 +103,12 @@ function start() {
 }
 
 function quizTime() {
+    //the game clock div is visible
+    gameClockElement.classList.remove('hide');
     //this variable has global scope, timer started
     gameClockInterval = setInterval(function () {
         //seconds decrement
         --seconds;
-        //the game clock div is visible
-        gameClockElement.classList.remove('hide');
         //clock text displays
         gameClockElement.textContent = commonSenseTime(seconds);
         //if the timer runs out - has to be set to <= due to penalty seconds deductions meaning it could skip zero
