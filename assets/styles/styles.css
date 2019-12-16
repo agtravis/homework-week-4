@@ -58,6 +58,17 @@ body {
     }
 }
 
+#points-table {
+    border-collapse: collapse;
+    margin: 5px auto 25px;
+}
+
+#points-table th, #points-table td {
+    border: 1px solid black;
+    padding: 5px;
+    width: 25%;
+}
+
 .bold {
     font-weight: 500;
 }
@@ -100,8 +111,17 @@ body {
     text-align: center;
 }
 
+#answer-buttons {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 #select-quiz {
     margin-bottom: 15px;
+}
+
+#question {
+    font-weight: bold;
 }
 
 .btn-grid {
@@ -209,11 +229,11 @@ ol#high-scores-list li button:hover {
 }
 
 .initial-field {
-    width: 50px;
+    width: 60px;
     padding: 10px;
     font-size: 2em;
     font-weight: bolder;
-    margin: 10px;
+    margin: 33px 10px;
 }
 
 #modal-container button {

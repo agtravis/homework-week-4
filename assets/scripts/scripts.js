@@ -24,6 +24,7 @@ var closeElement = document.getElementById('close-popup');
 var firstInitial = document.getElementById('first-initial');
 var secondInitial = document.getElementById('second-initial');
 var thirdInitial = document.getElementById('third-initial');
+var leaderTitle = document.getElementById('leader-title');
 
 //empty array for high scores initials - this will pull from storage
 var highScoresTable = '';
@@ -69,14 +70,14 @@ startButton.addEventListener('click', function () {
     instructions.classList.add('hide');
     quizTitle.classList.add('hide');
     //the countdown to start sentence is primed
-    timeToStart.textContent = 'The quiz will start in 5...';
+    timeToStart.textContent = 'Quiz starting in 5...';
     //start the countdown
     start();
 });
 
 function start() {
     //5 seconds til the quiz starts
-    var timeLeft = 1;//change!
+    var timeLeft = 5;//change!
     //trigger the timer, for each iteration
     var timeInterval = setInterval(function () {
         //the countdown text reads
@@ -123,7 +124,7 @@ function quizTime() {
 //timer to recognizable display
 function commonSenseTime(seconds) {
     if (seconds === 0) {
-        return 'Time left - ';
+        return 'Game-clock initiated...';
     } else {
         var minutesLeft = Math.floor(seconds / 60);
         minutesLeft = getPadding(minutesLeft) + minutesLeft;
@@ -347,6 +348,7 @@ function renderHighScoresInitials() {
         li.appendChild(button);
         highScoresList.appendChild(li);
     }
+    leaderTitle.textContent = highScoresTable + ' Leader Board';
 }
 
 highScoresList.addEventListener('click', function (event) {

@@ -36,12 +36,38 @@
                         <p>What follows are a series of questions. Get it right, score a point! Get it wrong, take 15
                             seconds
                             off the clock!</p>
-                        <p>What quiz would you like to take?</p>
+                        <p>Which quiz would you like to take?</p>
                         <select name="quiz-selection" id="select-quiz">
                             <option value="javascript" selected="selected">JavaScript</option>
                             <option value="world-capitals">World Capitals</option>
                         </select>
                         <p>The quiz is over when the time runs out or all questions have been answered.</p>
+                        <p>Scoring is as follows:</p>
+                        <table id="points-table">
+                            <tbody>
+                                <tr>
+                                    <th>Answer in under</th>
+                                    <th>Score</th>
+                                </tr>
+                                <tr>
+                                    <td>5 seconds</td>
+                                    <td>6 points</td>
+                                </tr>
+                                <tr>
+                                    <td>10 seconds</td>
+                                    <td>4 points</td>
+                                </tr>
+                                <tr>
+                                    <td>15 seconds</td>
+                                    <td>2 points</td>
+                                </tr>
+                                <tr>
+                                    <td>15+ seconds</td>
+                                    <td>1 point</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Get a question wrong and you'll have 15 seconds taken off the clock!</p>
                     </div>
                 </div>
                 <h2 id="countdown"></h2>
