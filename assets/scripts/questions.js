@@ -119,48 +119,48 @@ var questions = [
 
 var worldCapitals = [
     {
-        title: "The answer is A:",
+        title: "What is the capital of Spain?",
         answers: [
-            { text: "A", correct: true },
-            { text: "B", correct: false },
-            { text: "C", correct: false },
-            { text: "D", correct: false }
+            { text: "Madrid", correct: true },
+            { text: "Barcelona", correct: false },
+            { text: "Seville", correct: false },
+            { text: "Valencia", correct: false }
         ]
     },
     {
-        title: "The answer is F:",
+        title: "What is the capital of France",
         answers: [
-            { text: "E", correct: false },
-            { text: "F", correct: true },
-            { text: "G", correct: false },
-            { text: "H", correct: false }
+            { text: "Bordeaux", correct: false },
+            { text: "Paris", correct: true },
+            { text: "Calais", correct: false },
+            { text: "Lyon", correct: false }
         ]
     },
     {
-        title: "The answer is K:",
+        title: "What is the capital of Germany:",
         answers: [
-            { text: "I", correct: false },
-            { text: "J", correct: false },
-            { text: "K", correct: true },
-            { text: "L", correct: false }
+            { text: "Munich", correct: false },
+            { text: "Dusseldorf", correct: false },
+            { text: "Berlin", correct: true },
+            { text: "Koln", correct: false }
         ]
     },
     {
-        title: "The answer is P:",
+        title: "What is the capital of the United Kingdom",
         answers: [
-            { text: "M", correct: false },
-            { text: "N", correct: false },
-            { text: "O", correct: false },
-            { text: "P", correct: true }
+            { text: "Newcastle", correct: false },
+            { text: "Manchester", correct: false },
+            { text: "Liverpool", correct: false },
+            { text: "London", correct: true }
         ]
     },
     {
-        title: "The answer is Q:",
+        title: "What is the capital of the United States",
         answers: [
-            { text: "Q", correct: true },
-            { text: "R", correct: false },
-            { text: "S", correct: false },
-            { text: "T", correct: false }
+            { text: "Washington D.C.", correct: true },
+            { text: "New York City", correct: false },
+            { text: "Denver", correct: false },
+            { text: "Atlanta", correct: false }
         ]
     }
 ];
