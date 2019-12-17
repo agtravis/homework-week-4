@@ -216,7 +216,7 @@ function selectAnswer(event) {
             multiplier = 1;
         }
         score += multiplier;
-        questionsCorrect++;
+        ++questionsCorrect;
         correctAnswerNotification();
     } else {
         seconds = seconds - 15;
