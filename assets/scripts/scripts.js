@@ -106,6 +106,9 @@ function quizTime() {
         --seconds;
         //clock text displays
         gameClockElement.textContent = commonSenseTime(seconds);
+        if (seconds <= 20) {
+            gameClockElement.classList.add('wrong-answer');
+        }
         //if the timer runs out - has to be set to <= due to penalty seconds deductions meaning it could skip zero
         if (seconds <= 0) {
             //alert
