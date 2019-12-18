@@ -273,3 +273,63 @@ footer p {
     top: 18px;
     margin: 0;
 }
+
+#checkbox {
+    position: relative;
+    bottom: 8px;
+    right: 10px;
+}
+
+.customCheckbox input[type="checkbox"] {
+    opacity: 0;
+}
+
+.customCheckbox label::before {
+    content: "";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border: 1px solid #476b62;
+    position: relative;
+    right: -1px;
+}
+
+.customCheckbox label::after {
+    content: "";
+    display: inline-block;
+    height: 6px;
+    width: 9px;
+    border-left: 2px solid #222;
+    border-bottom: 2px solid #222;
+    transform: rotate(-45deg);
+}
+
+.customCheckbox label {
+    position: relative;
+}
+
+.customCheckbox label::before, .customCheckbox label::after {
+    position: absolute;
+}
+
+.customCheckbox label::before {
+    top: 3px;
+    background-color: #689c8f;
+}
+
+.customCheckbox label::after {
+    left: -12px;
+    top: 7px;
+}
+
+.customCheckbox input[type="checkbox"]+label::after {
+    content: none;
+}
+
+.customCheckbox input[type="checkbox"]:checked+label::after {
+    content: "";
+}
+
+.customCheckbox input[type="checkbox"]:focus+label::before {
+    outline:#222 auto 5px;
+}

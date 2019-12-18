@@ -1,133 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="assets/styles/styles.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <audio id="correctAudio">
-        <source src="assets/sounds/Ting-Popup_Pixels-349896185.wav" type="audio/wav">
-      </audio>
-      <audio id="wrongAudio">
-          <source src="assets/sounds/Buzzer-SoundBible.com-188422102.wav" type="audio/wav">
-        </audio>
+      <source
+        src="assets/sounds/Ting-Popup_Pixels-349896185.wav"
+        type="audio/wav"
+      />
+    </audio>
+    <audio id="wrongAudio">
+      <source
+        src="assets/sounds/Buzzer-SoundBible.com-188422102.wav"
+        type="audio/wav"
+      />
+    </audio>
 
     <header class="container-fluid">
-        <div id="header-container" class="row">
-            <div id="header-container-content" class="col-lg-9 col-md-10 col-sm-10 col-12">
-                <div id="header">
-                    <div id="title">
-                        <h1 id="main-title" class="display-4 bold">Quizzit!</h1>
-                        <p id="sub-title" class="lead">Test Your Knowledge!</p>
-                    </div>
-                    <a id="portfolio-link" href="https://agtravis.github.io/homework-week-2/index.html"
-                        target="_blank">My Portfolio</a>
-                </div>
+      <div id="header-container" class="row">
+        <div
+          id="header-container-content"
+          class="col-lg-9 col-md-10 col-sm-10 col-12"
+        >
+          <div id="header">
+            <div id="title">
+              <h1 id="main-title" class="display-4 bold">Quizzit!</h1>
+              <p id="sub-title" class="lead">Test Your Knowledge!</p>
             </div>
+            <a
+              id="portfolio-link"
+              href="https://agtravis.github.io/homework-week-2/index.html"
+              target="_blank"
+              >My Portfolio</a
+            >
+          </div>
         </div>
+      </div>
     </header>
     <div class="container-fluid">
-        <div class="row" id="main-row">
-            <div class="col-lg-9 col-md-10 col-sm-9 col-12" id="quiz-app">
-                <div>
-                    <h1 id="quiz-title">Test Your Knowledge</h1>
-                    <div id="instructions">
-                        <p>Which quiz would you like to take?</p>
-                        <select name="quiz-selection" id="select-quiz">
-                            <option value="javascript" selected="selected">JavaScript</option>
-                            <option value="world-capitals">World Capitals</option>
-                        </select>
-                        <p>The quiz is over when the time runs out or all questions have been answered.</p>
-                        <p>Scoring is as follows:</p>
-                        <table id="points-table">
-                            <tbody>
-                                <tr>
-                                    <th>Answer in under</th>
-                                    <th>Score</th>
-                                </tr>
-                                <tr>
-                                    <td>5 seconds</td>
-                                    <td>6 points</td>
-                                </tr>
-                                <tr>
-                                    <td>10 seconds</td>
-                                    <td>4 points</td>
-                                </tr>
-                                <tr>
-                                    <td>15 seconds</td>
-                                    <td>2 points</td>
-                                </tr>
-                                <tr>
-                                    <td>15+ seconds</td>
-                                    <td>1 point</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p>Get a question wrong and you'll have 15 seconds taken off the clock!</p>
-                    </div>
-                </div>
-                <h2 id="countdown"></h2>
-                <div id="question-container" class="hide">
-                    <div id="question"></div>
-                    <div id="answer-buttons" class="btn-grid">
-                    </div>
-                    <div id="answer-status" class="hide bold"></div>
-                </div>
-
-                <div class="controls" id="controls">
-                    <input type="checkbox" id="sounds"> - Would you like sounds enabled?<br>
-                    <button id="start-btn" class="start-btn btn">Start</button>
-                </div>
-                <div id="submit-score" class="hide">
-                    <p>You scored <span id="score"></span> points out of a possible <span id="possible-total"></span>,
-                    </p>
-                    <p>and answered <span id="questions-correct"></span> questions correct out of <span
-                            id="total"></span>!</p>
-                    <p>Would you like to submit your score?</p>
-                    <button id="submit-btn" class="btn">Submit!</button>
-
-                    <div id="modal-container" class="hide">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <span id="close-popup" class="close">&times;</span>
-                            </div>
-                            <div class="modal-body">
-                                <h3>
-                                    Enter Your Initials:
-                                </h3>
-                                <input type="text" id="first-initial" maxlength="1" class="initial-field">
-                                <input type="text" id="second-initial" maxlength="1" class="initial-field">
-                                <input type="text" id="third-initial" maxlength="1" class="initial-field">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div id="restart" class="hide"><button id="restart-btn" class="btn">Start over</button></div>
-                <div id="countdownGame" class="hide">Time left -</div>
-                <div id="high-scores" class="hide">
-                    <h2 id="leader-title">Leader Board</h2>
-                    <ol id="high-scores-list"></ol>
-                </div>
+      <div class="row" id="main-row">
+        <div class="col-lg-9 col-md-10 col-sm-9 col-12" id="quiz-app">
+          <div>
+            <h1 id="quiz-title">Test Your Knowledge</h1>
+            <div id="instructions">
+              <p>Which quiz would you like to take?</p>
+              <select name="quiz-selection" id="select-quiz">
+                <option value="javascript" selected="selected"
+                  >JavaScript</option
+                >
+                <option value="world-capitals">World Capitals</option>
+              </select>
+              <p>
+                The quiz is over when the time runs out or all questions have
+                been answered.
+              </p>
+              <p>Scoring is as follows:</p>
+              <table id="points-table">
+                <tbody>
+                  <tr>
+                    <th>Answer in under</th>
+                    <th>Score</th>
+                  </tr>
+                  <tr>
+                    <td>5 seconds</td>
+                    <td>6 points</td>
+                  </tr>
+                  <tr>
+                    <td>10 seconds</td>
+                    <td>4 points</td>
+                  </tr>
+                  <tr>
+                    <td>15 seconds</td>
+                    <td>2 points</td>
+                  </tr>
+                  <tr>
+                    <td>15+ seconds</td>
+                    <td>1 point</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                Get a question wrong and you'll have 15 seconds taken off the
+                clock!
+              </p>
             </div>
+          </div>
+          <h2 id="countdown"></h2>
+          <div id="question-container" class="hide">
+            <div id="question"></div>
+            <div id="answer-buttons" class="btn-grid"></div>
+            <div id="answer-status" class="hide bold"></div>
+          </div>
+
+          <div class="controls" id="controls">
+            <div class="customCheckbox" id="checkbox">
+              <p>
+                <input type="checkbox" id="sounds" /><label
+                  for="sounds"
+                ></label>
+              </p>
+            </div>
+
+            <p>Would you like sounds enabled?</p>
+            <button id="start-btn" class="start-btn btn">Start</button>
+          </div>
+          <div id="submit-score" class="hide">
+            <p>
+              You scored <span id="score"></span> points out of a possible
+              <span id="possible-total"></span>,
+            </p>
+            <p>
+              and answered <span id="questions-correct"></span> questions
+              correct out of <span id="total"></span>!
+            </p>
+            <p>Would you like to submit your score?</p>
+            <button id="submit-btn" class="btn">Submit!</button>
+
+            <div id="modal-container" class="hide">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span id="close-popup" class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                  <h3>
+                    Enter Your Initials:
+                  </h3>
+                  <input
+                    type="text"
+                    id="first-initial"
+                    maxlength="1"
+                    class="initial-field"
+                  />
+                  <input
+                    type="text"
+                    id="second-initial"
+                    maxlength="1"
+                    class="initial-field"
+                  />
+                  <input
+                    type="text"
+                    id="third-initial"
+                    maxlength="1"
+                    class="initial-field"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="restart" class="hide">
+            <button id="restart-btn" class="btn">Start over</button>
+          </div>
+          <div id="countdownGame" class="hide">Time left -</div>
+          <div id="high-scores" class="hide">
+            <h2 id="leader-title">Leader Board</h2>
+            <ol id="high-scores-list"></ol>
+          </div>
         </div>
+      </div>
     </div>
     <footer>
-        <p>Copyright Alexander George Travis 2019 ©</p>
+      <p>Copyright Alexander George Travis 2019 ©</p>
     </footer>
-
 
     <script src="assets/scripts/questions.js"></script>
     <script src="assets/scripts/scripts.js"></script>
-
-</body>
-
+  </body>
 </html>
