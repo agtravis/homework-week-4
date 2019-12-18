@@ -13,6 +13,13 @@
 
 <body>
 
+    <audio id="correctAudio">
+        <source src="assets/sounds/Ting-Popup_Pixels-349896185.wav" type="audio/wav">
+      </audio>
+      <audio id="wrongAudio">
+          <source src="assets/sounds/Buzzer-SoundBible.com-188422102.wav" type="audio/wav">
+        </audio>
+
     <header class="container-fluid">
         <div id="header-container" class="row">
             <div id="header-container-content" class="col-lg-9 col-md-10 col-sm-10 col-12">
@@ -75,7 +82,8 @@
                     <div id="answer-status" class="hide bold"></div>
                 </div>
 
-                <div class="controls">
+                <div class="controls" id="controls">
+                    <input type="checkbox" id="sounds"> - Would you like sounds enabled?<br>
                     <button id="start-btn" class="start-btn btn">Start</button>
                 </div>
                 <div id="submit-score" class="hide">

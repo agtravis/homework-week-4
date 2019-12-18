@@ -2,7 +2,7 @@
 
 ## Concept
 
-To create a functioning quiz application that will present a user with multiple choice questions against a count-down clock. Correct choices score points that fluctuate based on time taken to answer, and incorrect choices incur a time deduction penalty.
+To create a functioning quiz application that will present a user with multiple choice questions against a count-down clock. Correct choices score points that fluctuate based on time taken to answer, and incorrect choices incur a time deduction penalty. The user is notified of correct or incorrect answers by color appropriate messages and (if the user chooses so at the beginning) an accompanying sound effect.
 
 Users will be able to save their scores by entering their initials.
 
@@ -82,3 +82,5 @@ To finish, a series of spans in the HTML are assigned relevant values to inform 
 My ```init``` function refers to the scoreboard. First it checks for the user's quiz choice to define which key is used to accesss from local storage and display the correct table for the quiz taken. It also uses a helper function to organize the user scores so that the highest scorer is on the top. Note that I am only doing this by percent, so there will be ties.
 
 The user is presented with a div styled to look ```absolute```ly like a pop-up. There are 3 boxes, each with a ```keyup``` event listener to either move the cursor over or ```submit``` if complete, and all lower case is converted to upper case. On submit, the leader board is displayed.
+
+Each user in the leaderboard has a button to delete. I could write code that would only display the top ten, setting that in the condition statement in the ```for``` loop that creates this list, but for now it will display the whole list.
