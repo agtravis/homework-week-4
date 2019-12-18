@@ -275,9 +275,10 @@ footer p {
 }
 
 #checkbox {
-    position: relative;
-    bottom: 8px;
-    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .customCheckbox input[type="checkbox"] {
