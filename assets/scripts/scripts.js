@@ -209,7 +209,7 @@ function finish() {
   questionContainerElement.classList.add('hide');
   userScore.innerText = score;
   answeredCorrect.innerText = questionsCorrect;
-  possibleTotal.innerText = questions.length * maxQuestionScore; // max multiplier hard coded
+  possibleTotal.innerText = questions.length * maxQuestionScore;
   total.innerText = questions.length;
   finalScoreElement.classList.remove('hide');
   gameClockElement.classList.add('hide');
